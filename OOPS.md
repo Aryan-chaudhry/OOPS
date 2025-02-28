@@ -210,6 +210,250 @@ int main(){
 ##### 3. Encapsulation
 ##### 4. PolyMorphism
 
+### Inheritance
+
+The capability of a class to derived a property and characterstics of another class is known as Inheritance
+
+OR
+
+When we derived a datamember and member function of another class in our class is known as inheritance
+
+Types of Inheritance
+1. Single Inheritence
+2. Multilevel Inheritence
+3. Multiple Inheritence
+4. Hierarchial Inheritence
+5. Hybrid Inheritance
+
+
+### 1. Single Level Inheritence
+
+Single level Inheritence is a type of inheritence where child class get inherit from base class(Parent class)
+
+Diagram 
+
+```
+   +-------------+  
+   |   Parent    |  (Base Class)  
+   +-------------+  
+         ↑  
+         | Inherits  
+         ↓  
+   +-------------+  
+   |   Child     |  (Derived Class)  
+   +-------------+  
+```
+
+Code
+
+```
+#include<iostream>
+using namespace std;
+
+class Animal{
+    public:
+
+    void Info(){
+        cout << "i am an Aniaml" << endl;
+    }
+};
+
+class dog : public Animal{
+    public:
+
+    void myInfo(){
+        cout << "I am  a Dog" << endl;
+    }
+};
+
+int main(){
+    dog d;
+    d.myInfo();
+    d.Info();
+}
+```
+
+### Multilevel Inhriatnce
+
+Here the child class inherit the property of a base case who also act as a parent class for another class
+
+Diagram
+
+```
+   +-------------+  
+   | Grandparent |  (Base Class)  
+   +-------------+  
+         ↑  
+         | Inherits  
+         ↓  
+   +-------------+  
+   |   Parent     |  (Derived from Grandparent)  
+   +-------------+  
+         ↑  
+         | Inherits  
+         ↓  
+   +-------------+  
+   |   Child      |  (Derived from Parent)  
+   +-------------+  
+```
+
+Code
+
+```
+#include<iostream>
+using namespace std;
+
+class GrandFather{
+    public:
+
+    void grandFatherIntro(){
+        cout << "I am Grand Father" << endl; 
+    }
+};
+
+class Father : public GrandFather{
+    public:
+
+    void fatherIntro(){
+        cout << "I am Father" << endl;
+    }
+};
+
+class Son : public Father{
+    public:
+
+    void sonIntro(){
+        cout << "I am Son" << endl;
+    }
+};
+
+int main(){
+    Son s;
+    s.grandFatherIntro();
+    s.fatherIntro();
+    s.sonIntro();
+
+    return 0;
+}
+```
+
+### Multiple Inheritence
+
+When child class Inherit the Property of more then one Parent class than it is called Multiple Inheritence
+
+Diagram 
+
+```
+    +-------------+       +-------------+
+    |   Class A   |       |   Class B   |
+    +-------------+       +-------------+
+            \                   /
+             \                 /
+              \               /
+               \             /
+                \           /
+                 \         /
+                  \       /
+                 +-------------+
+                 |   Class C   |
+                 +-------------+
+```
+
+Code
+
+```
+#include<iostream>
+using namespace std;
+
+class Mother{
+    public:
+    void Intro(){
+        cout << "I am Mother" << endl;
+    }
+};
+
+class Father{
+    public:
+    void Intro(){
+        cout << "I am Father" << endl;
+    }
+};
+
+class Son : public Mother, public Father{
+    public:
+    void myIntro(){
+        cout << "I am child" << endl;
+    }
+};
+
+int main(){
+    Son s;
+    s.myIntro();
+    s.Intro(); // Cause Ambiguity because both parent class having same method
+}
+```
+
+#### Problem in Mutiple Inheritance
+
+it may cause Ambiguity
+
+##### Ambiguity : 
+
+if both parent class have same method name than compiler get confuse to select which method  this problem is known as Ambiguity
+
+#### How to Resolve it 
+
+1. Using Scope Resolution (::)
+2. Using Virtual Base class 
+
+#### 1. Using Scope Resoltion
+
+Syntax
+
+```
+object_name.class_name :: method_name()
+```
+
+Code
+
+```
+#include<iostream>
+using namespace std;
+
+class Mother{
+    public:
+    void Intro(){
+        cout << "I am Mother" << endl;
+    }
+};
+
+class Father{
+    public:
+    void Intro(){
+        cout << "I am Father" << endl;
+    }
+};
+
+class Son : public Mother, public Father{
+    public:
+    void myIntro(){
+        cout << "I am child" << endl;
+    }
+};
+
+int main(){
+    Son s;
+    s.myIntro();
+    s.Mother::Intro();
+    s.Father::Intro();
+}
+```
+
+
+#### 2. Using Virtual Base class
+
+
+
 
 
 
