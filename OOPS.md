@@ -1,5 +1,7 @@
 # OOPS
 
+## 1. Introduction to OOPS
+
 ### 1. Class
 
 class is a userdefined datatype which hold its own data members and member function which can be accessed and used by creating an instance of a class.
@@ -162,7 +164,12 @@ In Private Access Specifier the data memer and member function are accessible on
 
 ##### protected
 
-In Protected Access Specifier the data member and member function are accessible only with in the class and in derived classes 
+In Protected Access Specifier the data member and member function are accessible only with in the class and in derived classes
+
+### 6. Access Modifier
+
+Access Modifier change or enhance how class member behave, They do not control visibility but instead modify functionality 
+example friend class
 
 Note : To Access private and protected the data member and member function outside the class we can use frined class
 
@@ -195,5 +202,14 @@ int main(){
     
 }
 ```
+
+## 2. Our Main 4 pillars of OOPS
+
+##### 1. Inheritance
+##### 2. Abstraction
+##### 3. Encapsulation
+##### 4. PolyMorphism
+
+
 
 
