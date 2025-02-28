@@ -452,6 +452,139 @@ int main(){
 
 #### 2. Using Virtual Base class
 
+Mainly used in Diamond Problems 
+
+```
+#include <iostream>
+using namespace std;
+
+class Person {  // Common base class
+public:
+    void Intro() {
+        cout << "I am a Person" << endl;
+    }
+};
+
+// Using virtual inheritance
+class Mother : virtual public Person {};
+class Father : virtual public Person {};
+
+class Son : public Mother, public Father {
+public:
+    void myIntro() {
+        cout << "I am a child" << endl;
+    }
+};
+
+int main() {
+    Son s;
+    s.myIntro();
+    s.Intro();  // ✅ No ambiguity, virtual inheritance ensures a single copy of Person
+    return 0;
+}
+
+```
+
+### Hierarchial Inheritance
+
+When multiple derived class or child class inherit from same base class is known as Hierarichial Inheritance
+
+Diagram 
+
+```
+          [Base Class]  
+             Animal  
+               │  
+    ┌─────────┴─────────┐  
+    │                   │  
+   Dog                Cat  
+
+```
+
+Code 
+
+```
+#include<iostream>
+using namespace std;
+
+class Animal{
+    public:
+
+    void Intro(){
+        cout << " I am Animal " << endl;
+    }
+};
+
+class Dog : public Animal{
+    public: 
+
+    void MyIntro(){
+        cout << "I am a Dog" << endl;
+    }
+};
+
+class Cat : public Animal{
+    public:
+
+    void MyIntro(){
+        cout << "I am a Cat" << endl;
+    }
+};
+
+int main(){
+    Dog d;
+    Cat c;
+    d.MyIntro();
+    c.Intro();
+
+}
+```
+
+### Hybrid Inheritence
+
+Hybrid Inheritance is a Combination of multiple type of inheritance
+Most Important example --> Diamond Problem 
+
+Diagram
+
+```
+       [Base Class]  
+           A  
+        /    \  
+       B      C  
+        \    /  
+         D  (Ambiguity occurs here)
+
+```
+
+Code
+
+```
+#include <iostream>
+using namespace std;
+
+class A {
+public:
+    void show() {
+        cout << "I am A" << endl;
+    }
+};
+
+
+class B : virtual public A {};
+class C : virtual public A {};
+
+class D : public B, public C {};
+
+int main() {
+    D obj;
+    obj.show(); 
+    return 0;
+}
+
+```
+
+
 
 
 
